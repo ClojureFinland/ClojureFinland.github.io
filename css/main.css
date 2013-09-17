@@ -68,6 +68,10 @@ ul.posts span {
   text-decoration: none;
 }
 
+.site .header a.extra.active {
+  color: #000;
+}
+
 .site .header h1.title {
   display: inline-block;
   margin-bottom: 2em;
