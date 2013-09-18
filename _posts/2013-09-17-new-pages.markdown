@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "New pages"
+date:   2013-09-17 18:44:00
+categories: blog
+---
+
+New pages for Clojure Finland!
+
+After a few iterations I ended up creating simple [Jekyll][jekyll] pages because they are easy to manage and style further.
+
+[jekyll]: http://jekyllrb.com

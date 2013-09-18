@@ -1,53 +1,24 @@
-<html>
-<head>
-	<title>Clojure Finland</title>
-</head>
-<body>
+---
+layout: default
+title: Clojure Finland
+---
 
-	<h1>Clojure Finland</h1>
+<div id="home">
+  <h1>Upcoming Events</h1>
+  <ul class="posts">
+    {% for post in site.categories.event reversed %}
+      {% if post.date > site.time %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 
-	<h2>About us</h2>
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.categories.blog limit:5 %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 
-	<p>We want to bring together the Clojure hackers in Finland to help each other, talk about what we love, promote Clojure and hack interesting stuff.</p>
-
-	<h2>What is Clojure?</h2>
-
-	<p>Clojure is a dynamic general-purpose functional programming language that runs in Java Virtual Machine. For more info check out <a href="http://learn-clojure.com">Learn Clojure</a>, <a href="http://clojure.org">Clojure.org</a> and <a href="http://en.wikipedia.org/wiki/Clojure">Clojure Wikipedia</a>.</p>
-
-	<h2>News</h2>
-
-	<h3>New Github pages!</h3>
-
-	<p>Hi! These are brand new Github pages for Clojure Finland.
-	All ideas for improving these pages are welcome.</p>
-
-	<h2>Events</h2>
-
-	<ul>
-	  <li>28.-29.9.2013 <a href="http://clojurecup.com">Clojure Cup</a></li>
-	  <li>14.-15.10.2013 <a href="http://euroclojure.com/2013/">EuroClojure 2013</a> in Berlin</li>
-	  <li>23.10.2013 Helsinki Pub Night (<a href="http://www.stonespub.fi">Stone's gastropub</a>, Keskuskatu 4)</li>
-	  <li><a href="http://www.ludumdare.com">Ludum Dare</a></li>
-	</ul>
-
-	<h2>Past events</h2>
-
-	<ul>
-	  <li>11.9.2013 Helsinki Pub Night at Belge</li>
-	  <li>28.8.2013 <a href="http://clojutre.org/2013/">ClojuTRE 2013</a></li>
-	  <li>May 2013 Helsinki event at Nitor Creations</li>
-	  <li>April 2013 Helsinki event at Deveo</li>
-	</ul>
-
-	<h2>Clojure Finland in the nets</h2>
-
-	<ul>
-	  <li>GitHub Pages: <a href="http://clojurefinland.github.io">http://ClojureFinland.github.io</a></li>
-	  <li>GitHub organization: <a href="https://github.com/ClojureFinland">ClojureFinland</a></li>
-	  <li>Twitter: <a href="https://www.twitter.com/clojurefinland">@ClojureFinland</a></lI>
-	  <li>IRC: #clojure.fi at IRCnet</li>
-	  <li>Google Group: <a href="https://groups.google.com/d/forum/clojure-finland">clojure-finland</a></li>
-	</ul>
-
-<body>
-</html>
+  <p>Older items can be found in <a href="/archive">archives</a>.</p>
+</div>
