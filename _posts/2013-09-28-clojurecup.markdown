@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Clojure Cup"
-date:   2013-10-28
+date:   2013-09-28
 categories: event
 tags: clojurecup
 ---
