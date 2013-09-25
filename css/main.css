@@ -20,10 +20,13 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
+  font-size: 100%;
+  color: #222; }
 
 h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
+p {
+  margin: 1em 0;
+  color: #444; }
 
 a         { color: #00a; }
 a:hover   { color: #000; }
@@ -69,7 +72,7 @@ ul.posts span {
 }
 
 .site .header a.extra.active {
-  color: #000;
+  color: #222;
 }
 
 .site .header h1.title {
@@ -82,7 +85,7 @@ ul.posts span {
 }
 
 .site .header h1.title a:hover {
-  color: #000;
+  color: #222;
 }
 
 .site .header a.extra {
@@ -91,7 +94,7 @@ ul.posts span {
 }
 
 .site .header a.extra:hover {
-  color: #000;
+  color: #222;
 }
 
 .site .meta {
