@@ -26,10 +26,10 @@
 
    [:.container
     {:display               "inline-grid"
-     :grid-template-columns "1em min-content 1em"}]
+     :grid-template-columns "0.75em min-content 0.5em"}]
 
    [:.item-first
-    {:padding-top "0.25em"}]
+    {:padding-top "0.2em"}]
 
    [:.item-last
     {:padding-bottom "0.25em"
