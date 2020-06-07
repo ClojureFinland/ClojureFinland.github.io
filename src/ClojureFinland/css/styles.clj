@@ -18,6 +18,9 @@
    [:h1 :h2
     {:color "#99A3A4"}]
 
+   [:table :td
+    {:vertical-align "top"}]
+
    [:.separator
     {:height "0.5em"}]
 

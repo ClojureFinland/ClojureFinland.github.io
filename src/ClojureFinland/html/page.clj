@@ -8,7 +8,7 @@
   "This is Clojure Finland. We are a community that blalbalbalblaba...")
 
 (def companies-description
-  "Finnish companies that actively use Clojure & ClojureScript")
+  "Companies that use Clojure in Finland")
 
 (def companies
   [{:name "Metosin"
@@ -45,8 +45,11 @@
   {:github  "https://github.com/ClojureFinland"
    :twitter "https://twitter.com/clojurefinland"
    :email   "onko.meillä@joku.osoite"
-   :slack   "#clojure-finland at Clojurians Slack"
    :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"})
+
+(def meetup-groups
+  {:helsinki "https://www.meetup.com/Helsinki-Clojure-Meetup/events/"
+   :tampere  "https://www.meetup.com/Tampere-Clojure-Meetup/"})
 
 ;;; Utils ;;;
 
@@ -74,7 +77,10 @@
        (for [[k v] m]
          [:tr
           [:td (keyword-output k)]
-          [:td (if (link? v) (link v) (text-output v))]])]]]
+          [:td (cond
+                 (map? v)  (map-output v)
+                 (link? v) (link v)
+                 :else     (text-output v))]])]]]
     [:div.item-last "}"]]])
 
 ;;; Main ;;;
@@ -114,6 +120,10 @@
     ;; (text-output people-description)
     ;; [:p "> (doseq [p page/people] (prn p))"]
     ;; (interpose [:div.separator] (map map-output people))
+
+    [:h2 ";; Meetup Groups"]
+    [:p "> (prn page/meetup-groups)"]
+    (map-output meetup-groups)
 
     [:h2 ";; Contact"]
     [:p "> (prn page/contact)"]

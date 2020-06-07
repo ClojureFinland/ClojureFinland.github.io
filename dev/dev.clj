@@ -17,7 +17,7 @@
 
 (def config @clojure-finland/config)
 
-;; Dev config
+;; Dev server config
 (def port 8889)
 (def serve-dir "./dist")
 
