@@ -7,35 +7,46 @@
 (def description
   "This is Clojure Finland. We are a community that blalbalbalblaba...")
 
-(def links
-  {:github  "https://github.com/ClojureFinland"
-   :twitter "https://twitter.com/clojurefinland"})
+(def companies-description
+  "Finnish companies that actively use Clojure & ClojureScript")
 
-(def people-description
-  "Following people are active members of the Clojure Finland community")
+(def companies
+  [{:name "Metosin"
+    :web  "https://www.metosin.fi"}
+   {:name "Solita"
+    :web  "https://www.solita.fi"}
+   {:name "Siili Solutions"
+    :web  "https://www.siili.com/"}
+   {:name "Tomorrow Tech"
+    :web  "https://tomorrow.fi/"}])
 
-(def people
-  [{:name    "Ykä"
-    :github  "https://github.com/ykarikos"
-    :twitter "https://twitter.com/ykarikos"}
-   {:name    "Heimo"
-    :github  "https://github.com/huima"
-    :twitter "https://twitter.com/huima"}
-   {:name    "Kimmo"
-    :twitter "https://twitter.com/kimmokoskinen"
-    :github  "https://github.com/viesti"}
-   {:name    "Tommi"
-    :github  "https://github.com/ikitommi"
-    :twitter "https://twitter.com/ikitommi"}
-   {:name   "Tuomo"
-    :github "https://github.com/tvirolai"}
-   {:name   "Valtteri"
-    :github "https://github.com/vharmain"}])
+;; (def people-description
+;;   "Following people are active members of the Clojure Finland community")
+
+;; (def people
+;;   [{:name    "Ykä"
+;;     :github  "https://github.com/ykarikos"
+;;     :twitter "https://twitter.com/ykarikos"}
+;;    {:name    "Heimo"
+;;     :github  "https://github.com/huima"
+;;     :twitter "https://twitter.com/huima"}
+;;    {:name    "Kimmo"
+;;     :twitter "https://twitter.com/kimmokoskinen"
+;;     :github  "https://github.com/viesti"}
+;;    {:name    "Tommi"
+;;     :github  "https://github.com/ikitommi"
+;;     :twitter "https://twitter.com/ikitommi"}
+;;    {:name   "Tuomo"
+;;     :github "https://github.com/tvirolai"}
+;;    {:name   "Valtteri"
+;;     :github "https://github.com/vharmain"}])
 
 (def contact
-  {:email "onko.meillä@joku.osoite"
-   :zulip "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"
-   :slack "#clojure-finland at Clojurians Slack"})
+  {:github  "https://github.com/ClojureFinland"
+   :twitter "https://twitter.com/clojurefinland"
+   :email   "onko.meillä@joku.osoite"
+   :slack   "#clojure-finland at Clojurians Slack"
+   :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"})
 
 ;;; Utils ;;;
 
@@ -90,18 +101,19 @@
     [:p "> (prn (page/description))"]
     (text-output description)
 
-    [:h2 ";; Links"]
-    [:p "> (prn page/links)"]
-    (map-output links)
-
-    [:h2 ";; People"]
+    [:h2 ";; Companies"]
     [:p "> (prn page/people-description)"]
-    (text-output people-description)
-    [:p "> (doseq [p page/people] (prn p))"]
-    (interpose
-     [:div.separator]
-     (for [p people]
-       (map-output p)))
+    (text-output companies-description)
+    [:p "> (doseq [c page/companies] (prn c))"]
+    (->> companies
+         (map map-output)
+         (interpose [:div.separator]))
+
+    ;; [:h2 ";; People"]
+    ;; [:p "> (prn page/people-description)"]
+    ;; (text-output people-description)
+    ;; [:p "> (doseq [p page/people] (prn p))"]
+    ;; (interpose [:div.separator] (map map-output people))
 
     [:h2 ";; Contact"]
     [:p "> (prn page/contact)"]
