@@ -1,6 +1,7 @@
 (ns ClojureFinland.core
-  (:require [ClojureFinland.html.page :as html]
-            [ClojureFinland.css.styles :as css])
+  (:require [ClojureFinland.css.styles :as css]
+            [ClojureFinland.html.page :as html]
+            [clojure.java.io :as io])
   (:gen-class))
 
 (def default-config
@@ -25,6 +26,9 @@
 (defn -main
   "Builds html and css and spits them out to ./dist"
   [& _args]
+  ;; Create target directories if they don't exist
+  (io/make-parents (:html-target @config))
+  (io/make-parents (:css-target @config))
   (build!))
 
 (comment
