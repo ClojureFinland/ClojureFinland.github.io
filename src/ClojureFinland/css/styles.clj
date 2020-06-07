@@ -21,6 +21,9 @@
    [:table :td
     {:vertical-align "top"}]
 
+   [:.code
+    {:color "#80898a"}]
+
    [:.separator
     {:height "0.5em"}]
 
