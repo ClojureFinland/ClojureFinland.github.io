@@ -4,52 +4,75 @@
 
 ;;; Contents ;;;
 
-(def description
-  "This is Clojure Finland. We are a community that blalbalbalblaba...")
+(def main
+  {:title "Clojure Finland"
+   :code  "(require '[ClojureFinland.html.page :as page])"})
 
-(def companies-description
-  "Companies that use Clojure in Finland")
+(def about
+  {:title "About"
+   :description
+   {:code   "(prn (:description page/about))"
+    :output "This is Clojure Finland. We are a community that
+   blalbalbalblaba..."}})
 
 (def companies
-  [{:name "Metosin"
-    :web  "https://www.metosin.fi"}
-   {:name "Solita"
-    :web  "https://www.solita.fi"}
-   {:name "Siili Solutions"
-    :web  "https://www.siili.com/"}
-   {:name "Tomorrow Tech"
-    :web  "https://tomorrow.fi/"}])
+  {:title       "Companies"
+   :description
+   {:code   "(prn (:description page/companies))"
+    :output "Companies that use Clojure in Finland"}
+   :items
+   {:code   "(doseq [c (:items page/companies)] (prn (:output c)))"
+    :output
+    [{:name "Metosin"
+      :web  "https://www.metosin.fi"}
+     {:name "Solita"
+      :web  "https://www.solita.fi"}
+     {:name "Siili Solutions"
+      :web  "https://www.siili.com/"}
+     {:name "Tomorrow Tech"
+      :web  "https://tomorrow.fi/"}]}})
 
-;; (def people-description
-;;   "Following people are active members of the Clojure Finland community")
-
-;; (def people
-;;   [{:name    "Ykä"
-;;     :github  "https://github.com/ykarikos"
-;;     :twitter "https://twitter.com/ykarikos"}
-;;    {:name    "Heimo"
-;;     :github  "https://github.com/huima"
-;;     :twitter "https://twitter.com/huima"}
-;;    {:name    "Kimmo"
-;;     :twitter "https://twitter.com/kimmokoskinen"
-;;     :github  "https://github.com/viesti"}
-;;    {:name    "Tommi"
-;;     :github  "https://github.com/ikitommi"
-;;     :twitter "https://twitter.com/ikitommi"}
-;;    {:name   "Tuomo"
-;;     :github "https://github.com/tvirolai"}
-;;    {:name   "Valtteri"
-;;     :github "https://github.com/vharmain"}])
-
-(def contact
-  {:github  "https://github.com/ClojureFinland"
-   :twitter "https://twitter.com/clojurefinland"
-   :email   "onko.meillä@joku.osoite"
-   :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"})
+(def people
+  {:title "People"
+   :description
+   {:code   "(prn (:description page/people))"
+    :output "Following people are active members of the Clojure
+    Finland community"}
+   :items
+   {:code "(doseq [p (:items page/people)] (prn (:output p)))"
+    :output
+    [{:name    "Ykä"
+      :github  "https://github.com/ykarikos"
+      :twitter "https://twitter.com/ykarikos"}
+     {:name    "Heimo"
+      :github  "https://github.com/huima"
+      :twitter "https://twitter.com/huima"}
+     {:name    "Kimmo"
+      :twitter "https://twitter.com/kimmokoskinen"
+      :github  "https://github.com/viesti"}
+     {:name    "Tommi"
+      :github  "https://github.com/ikitommi"
+      :twitter "https://twitter.com/ikitommi"}
+     {:name   "Tuomo"
+      :github "https://github.com/tvirolai"}
+     {:name   "Valtteri"
+      :github "https://github.com/vharmain"}]}})
 
 (def meetup-groups
-  {:helsinki "https://www.meetup.com/Helsinki-Clojure-Meetup/events/"
-   :tampere  "https://www.meetup.com/Tampere-Clojure-Meetup/"})
+  {:title "Meetup Groups"
+   :code  "(prn (:output page/meetup-groups))"
+   :output
+   {:helsinki "https://www.meetup.com/Helsinki-Clojure-Meetup/events/"
+    :tampere  "https://www.meetup.com/Tampere-Clojure-Meetup/"}})
+
+(def contact
+  {:title "Contact"
+   :code  "(prn (:output page/contact))"
+   :output
+   {:github  "https://github.com/ClojureFinland"
+    :twitter "https://twitter.com/clojurefinland"
+    :email   "onko.meillä@joku.osoite"
+    :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"}})
 
 ;;; Utils ;;;
 
@@ -60,6 +83,9 @@
 
 (defn text-output [s]
   [:span "\"" s "\""])
+
+(defn code-output [s]
+  [:p.code "> " s])
 
 (defn link [href]
   [:span "\"" [:a {:href href} href] "\""])
@@ -83,6 +109,21 @@
                  :else     (text-output v))]])]]]
     [:div.item-last "}"]]])
 
+(defn section [{:keys [title description code items output]}]
+  (cond-> [] ; use vector to conj at the end
+    title       (conj [:h2 ";; " title])
+    code        (conj (code-output code))
+    description (conj (section description))
+    items       (conj (section items))
+    output      (conj (cond
+                        (map? output)  (map-output output)
+                        (coll? output) (->> output
+                                            (map map-output)
+                                            (interpose [:div.separator]))
+                        (link? output) (link output)
+                        :else          (text-output output)))
+    :always     seq)) ; convert to seq for Hiccup
+
 ;;; Main ;;;
 
 (defn gen-page [{:keys [dev]}]
@@ -100,31 +141,6 @@
     (page/include-css "styles.css")]
 
    [:body
-    [:h1 ";;; Clojure Finland"]
-    [:p "> (require '[ClojureFinland.html.page :as page])"]
-
-    [:h2 ";; About"]
-    [:p "> (prn (page/description))"]
-    (text-output description)
-
-    [:h2 ";; Companies"]
-    [:p "> (prn page/people-description)"]
-    (text-output companies-description)
-    [:p "> (doseq [c page/companies] (prn c))"]
-    (->> companies
-         (map map-output)
-         (interpose [:div.separator]))
-
-    ;; [:h2 ";; People"]
-    ;; [:p "> (prn page/people-description)"]
-    ;; (text-output people-description)
-    ;; [:p "> (doseq [p page/people] (prn p))"]
-    ;; (interpose [:div.separator] (map map-output people))
-
-    [:h2 ";; Meetup Groups"]
-    [:p "> (prn page/meetup-groups)"]
-    (map-output meetup-groups)
-
-    [:h2 ";; Contact"]
-    [:p "> (prn page/contact)"]
-    (map-output contact)]))
+    [:h1 ";;; " (:title main)]
+    (code-output (:code main))
+    (mapcat section [about companies #_people meetup-groups contact])]))
