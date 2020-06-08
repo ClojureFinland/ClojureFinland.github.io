@@ -23,14 +23,20 @@
    :items
    {:code "(doseq [company (-> page/companies :items :data)] (prn company))"
     :data
-    [{:name "Metosin"
-      :web  "https://www.metosin.fi"}
-     {:name "Solita"
-      :web  "https://www.solita.fi"}
-     {:name "Siili Solutions"
-      :web  "https://www.siili.com/"}
-     {:name "Tomorrow Tech"
-      :web  "https://tomorrow.fi/"}]}})
+    [{:name "Emblica" :web "https://emblica.fi"}
+     {:name "Evolta" :web "https://evolta.fi"}
+     {:name "Flowa" :web "https://www.flowa.fi"}
+     {:name "Futurice" :web "https://futurice.com"}
+     {:name "Gofore" :web "https://gofore.com"}
+     {:name "Leanheat" :web "https://leanheat.com"}
+     {:name "Metosin" :web "https://www.metosin.fi"}
+     {:name "Nitor" :web "https://www.nitor.com"}
+     {:name "Reaktor" :web "https://www.reaktor.com"}
+     {:name "Solita" :web "https://www.solita.fi"}
+     {:name "Siili Solutions" :web "https://www.siili.com"}
+     {:name "Tomorrow Tech" :web "https://tomorrow.fi"}
+     {:name "Wunderdog" :web "https://wunder.dog"}
+     {:name "YLE" :web "https://yle.fi/"}]}})
 
 (def people
   {:title "People"
@@ -72,6 +78,7 @@
    {:github  "https://github.com/ClojureFinland"
     :twitter "https://twitter.com/clojurefinland"
     :email   "onko.meillä@joku.osoite"
+    :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"
     :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"}})
 
 ;;; Utils ;;;
