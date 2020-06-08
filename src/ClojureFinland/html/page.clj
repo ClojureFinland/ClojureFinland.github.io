@@ -77,7 +77,6 @@
    :data
    {:github  "https://github.com/ClojureFinland"
     :twitter "https://twitter.com/clojurefinland"
-    :email   "onko.meillä@joku.osoite"
     :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"
     :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"}})
 
