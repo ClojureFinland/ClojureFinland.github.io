@@ -10,16 +10,21 @@
 
 (def about
   {:title "About"
+   :id    "about"
    :description
    {:code "(-> page/about :description :data)"
-    :data "This is Clojure Finland. We are a community that
-   blalbalbalblaba..."}})
+    :data "Clojure Finland is a community that promotes the use of
+    Clojure in Finland. We organise meetups in Helsinki and
+    Tampere.<br /><br />If you are new to Clojure, check the guides at
+    Clojure.org and don’t hesitate to ask questions in e.g. #beginners
+    or #clojure-finland channels in Clojurians Slack!"}})
 
 (def companies
   {:title "Companies"
+   :id    "companies"
    :description
    {:code "(-> page/companies :description :data)"
-    :data "Companies that use Clojure in Finland"}
+    :data "Companies that use Clojure in Finland."}
    :items
    {:code "(doseq [company (-> page/companies :items :data)] (prn company))"
     :data
@@ -36,10 +41,16 @@
      {:name "Siili Solutions" :web "https://www.siili.com"}
      {:name "Tomorrow Tech" :web "https://tomorrow.fi"}
      {:name "Wunderdog" :web "https://wunder.dog"}
-     {:name "YLE" :web "https://yle.fi/"}]}})
+     {:name "YLE" :web "https://yle.fi/"}]}
+   :text
+   {:code "(-> page/companies :text :data)"
+    ;; This is a bit ugly but I'll do it only once. ;)
+    :data "Is your company missing from the list? <a
+           href=\"#contact\">Contact us</a>."}})
 
 (def people
   {:title "People"
+   :id    "people"
    :description
    {:code "(-> page/people :description :data)"
     :data "Following people are active members of the Clojure
@@ -66,6 +77,7 @@
 
 (def meetup-groups
   {:title "Meetup Groups"
+   :id    "meetup-groups"
    :code  "(:data page/meetup-groups)"
    :data
    {:helsinki "https://www.meetup.com/Helsinki-Clojure-Meetup/events/"
@@ -73,12 +85,13 @@
 
 (def contact
   {:title "Contact"
+   :id    "contact"
    :code  "(:data page/contact)"
    :data
    {:github  "https://github.com/ClojureFinland"
+    :slack   "#clojure-finland @ clojurians.slack.com"
     :twitter "https://twitter.com/clojurefinland"
-    :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"
-    :zulip   "https://clojurians.zulipchat.com/#narrow/stream/173291-clojure-finland"}})
+    :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"}})
 
 ;;; Utils ;;;
 
@@ -115,9 +128,9 @@
                  :else     (text-output v))]])]]]
     [:div.item-last "}"]]])
 
-(defn section [{:keys [title description code items data]}]
+(defn section [{:keys [title id description code items data text]}]
   (cond-> [] ; use vector to conj at the end
-    title       (conj [:h2 ";; " title])
+    title       (conj [:h2 {:id id} ";; " title])
     code        (conj (code-output code))
     description (conj (section description))
     items       (conj (section items))
@@ -128,6 +141,7 @@
                                           (interpose [:div.separator]))
                         (link? data) (link data)
                         :else        (text-output data)))
+    text        (conj (section text))
     :always     seq)) ; convert to seq for Hiccup
 
 ;;; Main ;;;
@@ -147,6 +161,6 @@
     (page/include-css "styles.css")]
 
    [:body
-    [:h1 ";;; " (:title main)]
+    [:h1 {:id "clojure-finland"} ";;; " (:title main)]
     (code-output (:code main))
     (mapcat section [about companies #_people meetup-groups contact])]))
