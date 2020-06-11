@@ -90,7 +90,8 @@
    :code  "(:data page/contact)"
    :data
    {:github  "https://github.com/ClojureFinland"
-    :slack   "#clojure-finland @ clojurians.slack.com"
+    :slack   {:url     "http://clojurians.net/"
+              :channel "#clojure-finland"}
     :twitter "https://twitter.com/clojurefinland"
     :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"}})
 
