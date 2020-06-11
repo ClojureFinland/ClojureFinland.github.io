@@ -1,41 +1,57 @@
-ClojureFinland.github.io
-========================
+# ClojureFinland.github.io
 
-Sources for [Clojure Finland GitHub Pages](http://clojurefinland.github.io).
+Static site generator for Clojure Finland web-page.
 
-Contributing
-------------
+[hiccup](https://github.com/weavejester/hiccup) is used for generating HTML and [garden](https://github.com/noprompt/garden) for CSS.
 
-If you want to add content, get the code and create a pull request.
+## Prerequisities
 
-If you want to contribute more, request full access.
+Clojure CLI tools ([instructions](https://clojure.org/guides/getting_started))
 
-Setting up development environment
-----------------------------------
+## Local development
 
-If you want to develop these, you should install Ruby + Jekyll according to [Jekyll documention](http://jekyllrb.com).
+Clone from https://github.com/ClojureFinland/ClojureFinland.github.io
 
-Deployment
-----------
+Webserver and watchers can be started from REPL. See [dev.clj](./dev/dev.clj).
 
-Pushing changes to <code>master</code> branch will turn these sources to static html pages. The hard work is done by [Jekyll](http://jekyllrb.com).
+REPL with development deps can be started simply by `clj -A:dev`
 
-File structure
---------------
+``` shell
+✗ clj -A:dev
+Clojure 1.10.1
+user=> (require '[dev])
+nil
+user=> (ns dev)
+dev=> (clojure-finland/build!)
+Wrote ./dist/index.html
+Wrote ./dist/styles.css
+nil
+dev=> port
+8889
+dev=> serve-dir
+"./dist"
+dev=> (server/start! {:port port :root serve-dir})
+2020-06-06 16:08:03.167:INFO::main: Logging initialized @408925ms to org.eclipse.jetty.util.log.StdErrLog
+2020-06-06 16:08:03.208:INFO:oejs.Server:main: jetty-9.4.29.v20200521; built: 2020-05-21T17:20:40.598Z; git: 77c232aed8a45c818fd27232278d9f95a021095e; jvm 14.0.1+7
+2020-06-06 16:08:03.255:INFO:oejs.AbstractConnector:main: Started ServerConnector@30a7653e{HTTP/1.1, (http/1.1)}{0.0.0.0:8889}
+2020-06-06 16:08:03.255:INFO:oejs.Server:main: Started @409014ms
+Server started http://localhost:8889
+nil
+```
 
-New posts go to <code>_posts</code> directory.
+## Build
 
-There's no place for images at the moment.
+Generate html and css files under `./dist`
 
-Categories and tags
--------------------
+`clj -A:build`
 
-Use proper categories for posts, <code>event</code> for events and <code>blog</code> for blog posts.
+## Deploy
 
-Tags are used for tagging content. Example tags are <code>helsinki</code> and <code>tampere</code>.
+Deployment to Github Pages happens automatically via Github Actions once changes are merged into `master` branch.
 
-Post dates
-----------
+## License
 
-Set the event date the actual date the event is held so they will be listed in chronological order.
-Blog dates should be set to their creation date.
+Copyright © 2020 Clojure Finland
+
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
