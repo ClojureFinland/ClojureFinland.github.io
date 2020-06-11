@@ -81,7 +81,8 @@
    :code  "(:data page/meetup-groups)"
    :data
    {:helsinki "https://www.meetup.com/Helsinki-Clojure-Meetup/events/"
-    :tampere  "https://www.meetup.com/Tampere-Clojure-Meetup/"}})
+    :tampere  "https://www.meetup.com/Tampere-Clojure-Meetup/"
+    :bridge   "https://clojurebridge.fi/"}})
 
 (def contact
   {:title "Contact"
