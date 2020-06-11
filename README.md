@@ -1,6 +1,6 @@
 # ClojureFinland.github.io
 
-Static site generator for Clojure Finland web-page.
+Static site generator for [Clojure Finland web-page](http://clojurefinland.github.io/).
 
 [hiccup](https://github.com/weavejester/hiccup) is used for generating HTML and [garden](https://github.com/noprompt/garden) for CSS.
 
@@ -47,7 +47,7 @@ Generate html and css files under `./dist`
 
 ## Deploy
 
-Deployment to Github Pages happens automatically via Github Actions once changes are merged into `master` branch.
+Deployment to Github Pages happens automatically via Github Actions once changes are merged or pushed into `develop` branch.
 
 ## License
 
