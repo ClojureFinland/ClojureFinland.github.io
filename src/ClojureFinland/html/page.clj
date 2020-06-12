@@ -35,6 +35,7 @@
      {:name "Gofore" :web "https://gofore.com"}
      {:name "Leanheat" :web "https://leanheat.com"}
      {:name "Metosin" :web "https://www.metosin.fi"}
+     {:name "Netum" :web "https://www.netum.fi"}
      {:name "Nitor" :web "https://www.nitor.com"}
      {:name "Reaktor" :web "https://www.reaktor.com"}
      {:name "Solita" :web "https://www.solita.fi"}
