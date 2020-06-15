@@ -90,7 +90,8 @@
    :id    "contact"
    :code  "(:data page/contact)"
    :data
-   {:github  "https://github.com/ClojureFinland"
+   {:email   "<a href='mailto:clojurehelsinki@gmail.com'>clojurehelsinki@gmail.com</a>"
+    :github  "https://github.com/ClojureFinland"
     :slack   {:url     "http://clojurians.net/"
               :channel "#clojure-finland"}
     :twitter "https://twitter.com/clojurefinland"
