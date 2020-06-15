@@ -1,6 +1,7 @@
 /target
 /classes
 /checkouts
+/.lsp/*
 *.jar
 *.class
 /.cpcache
