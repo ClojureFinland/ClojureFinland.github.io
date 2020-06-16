@@ -38,6 +38,7 @@
      {:name "Netum" :web "https://www.netum.fi"}
      {:name "Nitor" :web "https://www.nitor.com"}
      {:name "Reaktor" :web "https://www.reaktor.com"}
+     {:name "Sharetribe" :web "https://www.sharetribe.com/"}
      {:name "Solita" :web "https://www.solita.fi"}
      {:name "Siili Solutions" :web "https://www.siili.com"}
      {:name "Tomorrow Tech" :web "https://tomorrow.fi"}
