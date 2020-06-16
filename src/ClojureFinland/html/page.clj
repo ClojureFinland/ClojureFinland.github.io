@@ -15,8 +15,9 @@
    {:code "(-> page/about :description :data)"
     :data "Clojure Finland is a community that promotes the use of
     Clojure in Finland. We organise meetups in Helsinki and
-    Tampere.<br /><br />If you are new to Clojure, check the guides at
-    Clojure.org and don’t hesitate to ask questions in e.g. #beginners
+    Tampere.<br /><br />If you are new to Clojure, check the 
+    <a href=\"https://clojure.org/guides/getting_started\">guides at
+    Clojure.org</a> and don’t hesitate to ask questions in e.g. #beginners
     or #clojure-finland channels in Clojurians Slack!"}})
 
 (def companies
