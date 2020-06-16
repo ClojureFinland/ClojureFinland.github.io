@@ -34,6 +34,7 @@
      {:name "Flowa" :web "https://www.flowa.fi"}
      {:name "Futurice" :web "https://futurice.com"}
      {:name "Gofore" :web "https://gofore.com"}
+     {:name "IPRally" :web "https://www.iprally.com/"}
      {:name "Leanheat" :web "https://leanheat.com"}
      {:name "Metosin" :web "https://www.metosin.fi"}
      {:name "Netum" :web "https://www.netum.fi"}
