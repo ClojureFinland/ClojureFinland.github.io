@@ -10,7 +10,8 @@
      :font-size        "14px"}]
 
    [:a
-    {:color "#20A5BE"}]
+    {:color "#20A5BE"
+     :text-underline-position "under"}]
 
    [:a:hover
     {:color "#24B6D2"}]
@@ -22,7 +23,8 @@
     {:vertical-align "top"}]
 
    [:.code
-    {:color "#8D9798"}]
+    {:color "#8D9798"
+     :font-weight "bold"}]
 
    [:.separator
     {:height "0.5em"}]
