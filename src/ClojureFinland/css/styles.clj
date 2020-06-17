@@ -4,25 +4,27 @@
 (defn gen-styles [_]
   (garden/css
    [:body
-    {:color            "#55AD1B"
+    {:color            "#5DBE1E"
      :font-family      ["Courier" "monospace"]
-     :background-color "#0F0D01"
+     :background-color "#000000"
      :font-size        "14px"}]
 
    [:a
-    {:color "#1D96AD"}]
+    {:color "#20A5BE"
+     :text-underline-position "under"}]
 
    [:a:hover
-    {:color "#21a5bf"}]
+    {:color "#24B6D2"}]
 
    [:h1 :h2
-    {:color "#99A3A4"}]
+    {:color "#A8B3B4"}]
 
    [:table :td
     {:vertical-align "top"}]
 
    [:.code
-    {:color "#80898a"}]
+    {:color "#8D9798"
+     :font-weight "bold"}]
 
    [:.separator
     {:height "0.5em"}]
