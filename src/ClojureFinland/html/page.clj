@@ -18,7 +18,8 @@
     Tampere.<br /><br />If you are new to Clojure, check the 
     <a href=\"https://clojure.org/guides/getting_started\">guides at
     Clojure.org</a> and don’t hesitate to ask questions in e.g. #beginners
-    or #clojure-finland channels in Clojurians Slack!"}})
+    or #clojure-finland channels in
+    <a href=\"http://clojurians.net/\">Clojurians Slack</a>!"}})
 
 (def companies
   {:title "Companies"
