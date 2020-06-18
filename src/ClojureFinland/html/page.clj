@@ -121,21 +121,29 @@
 (defn keyword-output [k]
   [:span.keyword ":" k])
 
+(declare table-output)
+
 (defn map-output [m]
-  [:div.map
-   [:div.container
-    [:div.item-first "{"]
-    [:div.item
-     [:table
-      [:tbody
-       (for [[k v] m]
-         [:tr
-          [:td (keyword-output k)]
-          [:td (cond
-                 (map? v)  (map-output v)
-                 (link? v) (link v)
-                 :else     (text-output v))]])]]]
-    [:div.item-last "}"]]])
+  (let [n-items (count m)]
+    (map-indexed
+      (fn [i [k v]]
+        [:tr
+         (into [:td {:aria-hidden "true"}] (if (= 0 i) "{" "&nbsp;"))
+         [:th (keyword-output k)]
+         [:td (let [column (cond
+                             (map? v)  (table-output v)
+                             (link? v) (link v)
+                             :else     (text-output v))]
+                (cond-> column
+                  (= i (dec n-items)) (into [[:span {:aria-hidden "true"} "}"]])))]])
+      m)))
+
+(defn table-output
+  [data]
+  [:table
+   (cond->> data
+     (map? data) (conj [])
+     :always (map #(into [:tbody] (map-output %))))])
 
 (defn section [{:keys [title id description code items data text]}]
   (cond-> [] ; use vector to conj at the end
@@ -144,10 +152,8 @@
     description (conj (section description))
     items       (conj (section items))
     data        (conj (cond
-                        (map? data)  (map-output data)
-                        (coll? data) (->> data
-                                          (map map-output)
-                                          (interpose [:div.separator]))
+                        (map? data)  (table-output data)
+                        (coll? data) (table-output data)
                         (link? data) (link data)
                         :else        (text-output data)))
     text        (conj (section text))
