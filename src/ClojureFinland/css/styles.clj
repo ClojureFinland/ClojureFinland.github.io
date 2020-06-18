@@ -5,7 +5,7 @@
   (garden/css
    [:body
     {:color            "#5DBE1E"
-     :font-family      ["Courier" "monospace"]
+     :font-family      ["Cousine" "monospace"]
      :background-color "#000000"
      :font-size        "14px"}]
 
