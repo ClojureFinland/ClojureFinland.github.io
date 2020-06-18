@@ -19,23 +19,17 @@
    [:h1 :h2
     {:color "#A8B3B4"}]
 
-   [:table :td
+   [:table
+    {:text-align "left"}]
+
+   [:table :th :td
     {:vertical-align "top"}]
+
+   ["tbody::after"
+    {:content "''"
+     :display "block"
+     :height "0.5em"}]
 
    [:.code
     {:color "#8D9798"
-     :font-weight "bold"}]
-
-   [:.separator
-    {:height "0.5em"}]
-
-   [:.container
-    {:display               "inline-grid"
-     :grid-template-columns "0.75em min-content 0.5em"}]
-
-   [:.item-first
-    {:padding-top "0.2em"}]
-
-   [:.item-last
-    {:padding-bottom "0.25em"
-     :align-self     "end"}]))
+     :font-weight "bold"}]))
