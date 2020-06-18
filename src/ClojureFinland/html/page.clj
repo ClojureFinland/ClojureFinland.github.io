@@ -129,7 +129,7 @@
       (fn [i [k v]]
         [:tr
          (into [:td {:aria-hidden "true"}] (if (= 0 i) "{" "&nbsp;"))
-         [:th (keyword-output k)]
+         [:th {:scope "row"} (keyword-output k)]
          [:td (let [column (cond
                              (map? v)  (table-output v)
                              (link? v) (link v)
