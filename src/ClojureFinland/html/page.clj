@@ -100,7 +100,7 @@
     :slack   {:url     "http://clojurians.net/"
               :channel "#clojure-finland"}
     :twitter "https://twitter.com/clojurefinland"
-    :youtube "https://www.youtube.com/channel/UCfGBHLpNCBkRR-3eAbMoWcw"}})
+    :youtube "https://www.youtube.com/channel/UC7GYPoytIg5R56V2Pn-xU9g"}})
 
 ;;; Utils ;;;
 
