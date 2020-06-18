@@ -32,15 +32,4 @@
 
    [:.code
     {:color "#8D9798"
-     :font-weight "bold"}]
-
-   [:.container
-    {:display               "inline-grid"
-     :grid-template-columns "0.75em min-content 0.5em"}]
-
-   [:.item-first
-    {:padding-top "0.2em"}]
-
-   [:.item-last
-    {:padding-bottom "0.25em"
-     :align-self     "end"}]))
+     :font-weight "bold"}]))
