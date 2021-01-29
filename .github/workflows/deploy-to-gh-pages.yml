@@ -16,9 +16,9 @@ jobs:
         java-version: 13
 
     - name: Setup Clojure
-      uses: DeLaGuardo/setup-clojure@2.0
+      uses: DeLaGuardo/setup-clojure@master
       with:
-        tools-deps: 1.10.1.469
+        cli: '1.10.1.469'
 
     - name: Build static assets
       run: clojure -A:build
