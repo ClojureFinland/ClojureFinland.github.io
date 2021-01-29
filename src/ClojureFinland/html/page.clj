@@ -31,6 +31,7 @@
    {:code "(doseq [company (-> page/companies :items :data)] (prn company))"
     :data
     [{:name "Cloudpermit" :web "https://cloudpermit.com/"}
+     {:name "Digitaalinen asuntokauppa DIAS" :web "https://dias.fi"}
      {:name "Discendum" :web "https://discendum.fi/"}
      {:name "Emblica" :web "https://emblica.fi"}
      {:name "Flowa" :web "https://www.flowa.fi"}
