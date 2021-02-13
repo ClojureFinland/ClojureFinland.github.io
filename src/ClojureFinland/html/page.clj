@@ -19,7 +19,8 @@
     <a href=\"https://clojure.org/guides/getting_started\">guides at
     Clojure.org</a> and don’t hesitate to ask questions in e.g. #beginners
     or #clojure-finland channels in
-    <a href=\"http://clojurians.net/\">Clojurians Slack</a>!"}})
+    <a href=\"http://clojurians.net/\">Clojurians Slack</a> or 
+    #clojure channel in <a href=\"https://koodiklinikka.fi\">Koodiklinikka Slack</a>!"}})
 
 (def companies
   {:title "Companies"
@@ -99,8 +100,12 @@
    :data
    {:email   "<a href='mailto:clojurehelsinki@gmail.com'>clojurehelsinki@gmail.com</a>"
     :github  "https://github.com/ClojureFinland"
-    :slack   {:url     "http://clojurians.net/"
-              :channel "#clojure-finland"}
+    :slack   [{:url      "https://koodiklinikka.fi/"
+              	:channel  "#clojure"
+              	:language "Finnish"}
+              {:url      "http://clojurians.net/"
+               :channel  "#clojure-finland"
+               :language "English"}]
     :twitter "https://twitter.com/clojurefinland"
     :youtube "https://www.youtube.com/channel/UC7GYPoytIg5R56V2Pn-xU9g/videos"}})
 
@@ -134,6 +139,7 @@
          [:th {:scope "row"} (keyword-output k)]
          [:td (let [column (cond
                              (map? v)  (table-output v)
+                             (coll? v) (table-output v)
                              (link? v) (link v)
                              :else     (text-output v))]
                 (cond-> column

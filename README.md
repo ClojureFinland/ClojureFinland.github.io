@@ -51,7 +51,7 @@ Deployment to Github Pages happens automatically via Github Actions once changes
 
 ## License
 
-Copyright © 2020 Clojure Finland
+Copyright © 2020–2021 Clojure Finland
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
