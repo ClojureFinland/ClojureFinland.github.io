@@ -103,7 +103,7 @@
     :slack   [{:url      "https://koodiklinikka.fi/"
               	:channel  "#clojure"
               	:language "Finnish"}
-              {:url      "http://clojurians.net/"
+              {:url      "https://join.slack.com/t/clojurians/shared_invite/zt-lsr4rn2f-jealnYXLHVZ61V2vdi15QQ"
                :channel  "#clojure-finland"
                :language "English"}]
     :twitter "https://twitter.com/clojurefinland"
