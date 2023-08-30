@@ -15,11 +15,11 @@
    {:code "(-> page/about :description :data)"
     :data "Clojure Finland is a community that promotes the use of
     Clojure in Finland. We organise meetups in Helsinki and
-    Tampere.<br /><br />If you are new to Clojure, check the 
+    Tampere.<br /><br />If you are new to Clojure, check the
     <a href=\"https://clojure.org/guides/getting_started\">guides at
     Clojure.org</a> and don’t hesitate to ask questions in e.g. #beginners
     or #clojure-finland channels in
-    <a href=\"http://clojurians.net/\">Clojurians Slack</a> or 
+    <a href=\"http://clojurians.net/\">Clojurians Slack</a> or
     #clojure channel in <a href=\"https://koodiklinikka.fi\">Koodiklinikka Slack</a>!"}})
 
 (def companies
@@ -44,6 +44,7 @@
      {:name "Netum" :web "https://www.netum.fi"}
      {:name "Nitor" :web "https://www.nitor.com"}
      {:name "Reaktor" :web "https://www.reaktor.com"}
+     {:name "Remod" :web "https://remod.fi/"}
      {:name "Sharetribe" :web "https://www.sharetribe.com/"}
      {:name "Solita" :web "https://www.solita.fi"}
      {:name "Siili Solutions" :web "https://www.siili.com"}
@@ -102,8 +103,8 @@
    {:email   "<a href='mailto:clojurehelsinki@gmail.com'>clojurehelsinki@gmail.com</a>"
     :github  "https://github.com/ClojureFinland"
     :slack   [{:url      "https://koodiklinikka.fi/"
-              	:channel  "#clojure"
-              	:language "Finnish"}
+               :channel  "#clojure"
+               :language "Finnish"}
               {:url      "https://join.slack.com/t/clojurians/shared_invite/zt-lsr4rn2f-jealnYXLHVZ61V2vdi15QQ"
                :channel  "#clojure-finland"
                :language "English"}]
@@ -134,18 +135,18 @@
 (defn map-output [m]
   (let [n-items (count m)]
     (map-indexed
-      (fn [i [k v]]
-        [:tr
-         (into [:td {:aria-hidden "true"}] (if (= 0 i) "{" "&nbsp;"))
-         [:th {:scope "row"} (keyword-output k)]
-         [:td (let [column (cond
-                             (map? v)  (table-output v)
-                             (coll? v) (table-output v)
-                             (link? v) (link v)
-                             :else     (text-output v))]
-                (cond-> column
-                  (= i (dec n-items)) (into [[:span {:aria-hidden "true"} "}"]])))]])
-      m)))
+     (fn [i [k v]]
+       [:tr
+        (into [:td {:aria-hidden "true"}] (if (= 0 i) "{" "&nbsp;"))
+        [:th {:scope "row"} (keyword-output k)]
+        [:td (let [column (cond
+                            (map? v)  (table-output v)
+                            (coll? v) (table-output v)
+                            (link? v) (link v)
+                            :else     (text-output v))]
+               (cond-> column
+                 (= i (dec n-items)) (into [[:span {:aria-hidden "true"} "}"]])))]])
+     m)))
 
 (defn table-output
   [data]
