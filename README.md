@@ -16,7 +16,7 @@ Webserver and watchers can be started from REPL. See [dev.clj](./dev/dev.clj).
 
 REPL with development deps can be started simply by `clj -A:dev`
 
-``` shell
+```shell
 ✗ clj -A:dev
 Clojure 1.10.1
 user=> (require '[dev])
@@ -51,7 +51,7 @@ Deployment to Github Pages happens automatically via Github Actions once changes
 
 ## License
 
-Copyright © 2020–2021 Clojure Finland
+Copyright © 2020–2023 Clojure Finland
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
