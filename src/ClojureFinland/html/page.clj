@@ -50,7 +50,6 @@
      {:name "Solita" :web "https://www.solita.fi"}
      {:name "Siili Solutions" :web "https://www.siili.com"}
      {:name "Taiste" :web "https://taiste.fi"}
-     {:name "Tomorrow Tech" :web "https://tomorrow.fi"}
      {:name "Vincit" :web "https://www.vincit.fi"}
      {:name "Wunderdog" :web "https://wunder.dog"}
      {:name "YLE" :web "https://yle.fi/"}]}
